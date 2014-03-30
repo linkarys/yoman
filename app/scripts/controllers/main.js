@@ -9,7 +9,7 @@ angular.module('mainApp')
 
 	$scope.summit = function() {
 		console.log($scope.model);
-		$http.post('http://www.baidu.com', $scope.model)
+		$http.post('http://bam.uudragon.net/bam/consumer_saved', $scope.model)
 		.success(function(data, status) {
 			console.log(data);
 		})
