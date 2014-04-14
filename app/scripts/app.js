@@ -9,9 +9,13 @@ angular.module('d3App', [
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .when('/Agent', {
+      .when('/agent', {
         templateUrl: 'views/agent.html',
         controller: 'AgentCtrl'
+      })
+      .when('/customer', {
+        templateUrl: 'views/customer.html',
+        controller: 'CustomerCtrl'
       })
       .otherwise({
         redirectTo: '/'
