@@ -3,7 +3,7 @@
 	var fig = {
 		perPage: 15,
 		maxPages: 10,
-		baseurl: '/',
+		baseurl: '/atnew/',
 	}
 
 	angular.extend(config, fig);
