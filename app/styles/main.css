@@ -30,10 +30,10 @@
  * ----------------------------------------------------------------------------
  */
 .drak-grain {
-  background: transparent url("../img/dark.png"); }
+  background: transparent url("../images/dark.png"); }
 
 .light-grain {
-  background: transparent url("../img/light.png"); }
+  background: transparent url("../images/light.png"); }
 
 /**
  * Mixins
@@ -205,7 +205,7 @@ a {
   width: 100%;
   height: 100%;
   padding-top: 140px;
-  background: url(../img/body.jpg); }
+  background: url(../images/body.jpg); }
 
 .input-group.login {
   margin: 12px 0px; }

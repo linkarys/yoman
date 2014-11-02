@@ -3,7 +3,11 @@
 *.jar
 *.war
 *.ear
+*.log
+*.log.1
+*.sh.bak
 node_modules
 .tmp
 .sass-cache
 uud/
+dist

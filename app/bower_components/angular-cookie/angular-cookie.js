@@ -3,10 +3,19 @@
  * Contributors:
  *   Matjaz Lipus
  */
-angular.module('ivpusic.cookie', ['ng']).
+angular.module('ivpusic.cookie', ['ipCookie']);
+angular.module('ipCookie', ['ng']).
 factory('ipCookie', ['$document',
   function ($document) {
     'use strict';
+      
+    function tryDecodeURIComponent(value) {
+        try {
+            return decodeURIComponent(value);
+        } catch(e) {
+              // Ignore any invalid uri component
+        }
+    }
 
     return (function () {
       function cookieFun(key, value, options) {
@@ -34,16 +43,18 @@ factory('ipCookie', ['$document',
             if (expiresFor === -1) {
               options.expires = new Date('Thu, 01 Jan 1970 00:00:00 GMT');
               // A new 
-            } else {
-              if (options.expirationUnit !== undefined) {
-                if (options.expirationUnit === 'minutes') {
-                  options.expires.setMinutes(options.expires.getMinutes() + expiresFor);
-                } else {
-                  options.expires.setDate(options.expires.getDate() + expiresFor);
-                }
+            } else if (options.expirationUnit !== undefined) {
+              if (options.expirationUnit === 'hours') {
+                options.expires.setHours(options.expires.getHours() + expiresFor);
+              } else if (options.expirationUnit === 'minutes') {
+                options.expires.setMinutes(options.expires.getMinutes() + expiresFor);
+              } else if (options.expirationUnit === 'seconds') {
+                options.expires.setSeconds(options.expires.getSeconds() + expiresFor);
               } else {
                 options.expires.setDate(options.expires.getDate() + expiresFor);
               }
+            } else {
+              options.expires.setDate(options.expires.getDate() + expiresFor);
             }
           }
           return ($document[0].cookie = [
@@ -71,7 +82,9 @@ factory('ipCookie', ['$document',
             cookie = list[i];
             pos = cookie.indexOf('=');
             name = cookie.substring(0, pos);
-            value = decodeURIComponent(cookie.substring(pos + 1));
+            value = tryDecodeURIComponent(cookie.substring(pos + 1));
+            if(angular.isUndefined(value))
+              continue;
 
             if (key === undefined || key === name) {
               try {

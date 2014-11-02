@@ -34,7 +34,7 @@
 					<h3 class="subtitle">优优龙权限管理系统</h3>
 
 					<div class="modal-dialog" style="width:350px">
-						<div class="form-error-msg" ng-if="errorMsg"> {{errorMsg}} </div>
+						<div class="form-error-msg" ng-if="errorMsg" ng-bind="errorMsg"></div>
 						<form class="form col-xs-12" ng-submit="login(loginForm.$valid)" name="loginForm" novalidate>
 							<div class="input-group login" ng-class="{ 'has-error' : (loginForm.account.$invalid || inValid == 'account') && (!loginForm.account.$pristine || submitted) }">
 								<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
@@ -84,17 +84,17 @@
 				if (!isValid) return;
 
 				var user = 'account=' + $scope.model.account + '&password=' + md5.createHash($scope.model.password);
-				var url = 'at/operate.op?className=loginAction&methodName=login&';
+				var url = 'operate.op?className=loginAction&methodName=login&';
 
 				$http.get(config.baseurl + url + user)
 					.success(function(res, status) {
-
 						if (res.legal) {
 							// 登陆成功
+							window.location = '/';
 						} else if(angular.isString(res.message)) {
 							// 用户名或密码错误
 							var errorCode = res.message.split(':')[0];
-							
+
 							switch (errorCode) {
 
 								case 'E_00101':
@@ -132,7 +132,7 @@
 
 		})
 	</script>
-	
+
 	<!-- endbuild -->
 </body>
 </html>

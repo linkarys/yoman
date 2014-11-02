@@ -2,7 +2,7 @@
 
 angular.module('authApp')
 
-.controller('MainCtrl', function ($scope, $state, UUDBasicService) {
+.controller('MainCtrl', ['$scope', '$state', 'UUDBasicService', function ($scope, $state, UUDBasicService) {
 
 	$scope.$state = $state;
 
@@ -278,45 +278,45 @@ angular.module('authApp')
 
 		$('#rolePrivilege').modal('hide');
 	}
-})
+}])
 
 	/*
 	 * Sub Controllers
 	 * ----------------------------------------------------------------------
 	 */
-	
-	.controller('LoginCtrl', function ($scope, UUDBasicService) {
+
+	.controller('LoginCtrl', ['$scope', 'UUDBasicService', function ($scope, UUDBasicService) {
 
 		$scope.logout = function() {
 			UUDBasicService.logout();
 		}
-	})
+	}])
 
-	.controller('UserCtrl', function ($scope, UUDBasicService, $controller) {
+	.controller('UserCtrl', ['$scope', 'UUDBasicService', '$controller', function ($scope, UUDBasicService, $controller) {
 
 		$scope.objType = 'user';
 		$controller('MainCtrl', {$scope: $scope});
-	})
+	}])
 
-	.controller('UgroupCtrl', function ($scope, $controller) {
-		
+	.controller('UgroupCtrl', ['$scope', '$controller', function ($scope, $controller) {
+
 		$scope.objType = 'userGroup';
 		$controller('MainCtrl', {$scope: $scope});
-	})
+	}])
 
-	.controller('RoleCtrl', function ($scope, UUDBasicService, $controller) {
+	.controller('RoleCtrl', ['$scope', 'UUDBasicService', '$controller', function ($scope, UUDBasicService, $controller) {
 
 		$scope.objType = 'role';
 		$controller('MainCtrl', {$scope: $scope});
-	})
+	}])
 
-	.controller('RgroupCtrl', function ($scope, $controller) {
+	.controller('RgroupCtrl', ['$scope', '$controller', function ($scope, $controller) {
 
 		$scope.objType = 'roleGroup';
 		$controller('MainCtrl', {$scope: $scope});
-	})
+	}])
 
-	.controller('PrivilegeCtrl', function ($scope, UUDBasicService) {
+	.controller('PrivilegeCtrl', ['$scope', 'UUDBasicService', function ($scope, UUDBasicService) {
 
 		//	baisc settings
 		var setting = {
@@ -462,7 +462,7 @@ angular.module('authApp')
 					method: model.method
 				};
 				$.extend(current, node);
-			
+
 				zTree.updateNode(current);
 				UUDBasicService.update(model, type)
 					.success(function(data, status) {
@@ -515,4 +515,4 @@ angular.module('authApp')
 		function beforeDrag(treeId, treeNode) {
 			return false;
 		}
-	})
+	}])

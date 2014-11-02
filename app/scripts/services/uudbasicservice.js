@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('authApp')
-.service('UUDBasicService', function UUDBasicService($http) {
+.service('UUDBasicService', ['$http', function UUDBasicService($http) {
 
 	var baseurl = config.baseurl;
 	var self = this;
@@ -259,7 +259,7 @@ angular.module('authApp')
 	this.search = function($scope, type) {
 
 		var suffix;
-		console.log('search', type);
+
 		switch (type) {
 			case 'user':
 				suffix = 'operate.op?className=userAction&methodName=searchUser';
@@ -452,4 +452,4 @@ angular.module('authApp')
 			});
 	}
 
-});
+}]);

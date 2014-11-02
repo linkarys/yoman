@@ -1,6 +1,7 @@
 {
   "name": "angular-cookie",
   "main": "angular-cookie.js",
+  "version": "4.0.6",
   "homepage": "https://github.com/ivpusic/angular-cookie",
   "authors": [
     "ivpusic <pusic007@gmail.com>"
@@ -27,14 +28,13 @@
   "dependencies": {
     "angular": "*"
   },
-  "_release": "ec528481ba",
+  "_release": "4.0.6",
   "_resolution": {
-    "type": "branch",
-    "branch": "master",
-    "commit": "ec528481bac0bac82f53aa11d82133fc78f0def5"
+    "type": "version",
+    "tag": "v4.0.6",
+    "commit": "3440b84102bf97d83d344ab6db726b4f8cadd09a"
   },
   "_source": "git://github.com/ivpusic/angular-cookie.git",
   "_target": "*",
-  "_originalSource": "angular-cookie",
-  "_direct": true
+  "_originalSource": "angular-cookie"
 }
