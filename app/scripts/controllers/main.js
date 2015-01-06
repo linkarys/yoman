@@ -2,7 +2,7 @@
 
 angular.module('authApp')
 
-.controller('MainCtrl', ['$scope', '$state', 'UUDBasicService', function ($scope, $state, UUDBasicService) {
+.controller('MainCtrl', ['$scope', '$state', 'UUDBasicService', '$q', function ($scope, $state, UUDBasicService, $q) {
 
 	$scope.$state = $state;
 
@@ -248,8 +248,14 @@ angular.module('authApp')
 
 		$scope.privilegeModalTitle = "修改权限";
 		$scope.currentModel = model;
-		UUDBasicService.getPrivileges($scope, model, $scope.objType);
-		UUDBasicService.getAllPrivileges($scope, setting);
+
+		var privilegesDefer = UUDBasicService.getPrivileges(model, $scope.objType);
+		var allPrivilegesDefer = UUDBasicService.getAllPrivileges();
+
+		$q.all([allPrivilegesDefer, privilegesDefer])
+			.then(function(data) {
+				UUDBasicService.rebuildTree(data[0].data, data[1].data, setting);
+			});
 	}
 
 	$scope.savePrivilege = function() {

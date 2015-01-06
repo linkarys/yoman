@@ -5,7 +5,6 @@ angular.module('authApp')
 
 	var baseurl = config.baseurl;
 	var self = this;
-	var indicator = {};
 
 	this.getBreadcrumb = function(route) {
 
@@ -373,7 +372,7 @@ angular.module('authApp')
 
 	}
 
-	this.getPrivileges = function($scope, model, type) {
+	this.getPrivileges = function(model, type) {
 
 		var suffix;
 
@@ -394,37 +393,21 @@ angular.module('authApp')
 			return;
 		}
 
-		self.post(baseurl + suffix, {id: model.id})
-			.success(function(data, status) {
-				$scope.privileges = data;
-				indicator.privileges = true;
-
-				if (indicator.allPrivileges) {
-					indicator = {};
-					self.rebuildTree($scope.allPrivileges, $scope.privileges, setting);
-				}
-			})
+		return self.post(baseurl + suffix, {id: model.id})
+			.error(function(data, status) {
+				console.log('getPrivileges error status: ' + status + ' use dummy data');
+			});
 
 	}
 
-	this.getAllPrivileges = function($scope, setting) {
+	this.getAllPrivileges = function() {
 
 		var suffix = 'operate.op?className=privilege&methodName=load';
 
-		self.post(baseurl + suffix)
-			.success(function(data, status) {
-				indicator.allPrivileges = true;
-				$scope.allPrivileges = data;
-
-				if (indicator.privileges) {
-					indicator = {};
-					self.rebuildTree($scope.allPrivileges, $scope.privileges, setting);
-				}
-			})
+		return self.post(baseurl + suffix)
 			.error(function(data, status) {
 				console.log('getAllPrivilege error status: ' + status + ' use dummy data');
-
-			})
+			});
 
 	}
 

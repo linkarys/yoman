@@ -2,28 +2,25 @@
 
 <div uu-alert level="{{alertLevel}}" msg="{{alertMsg}}"></div>
 
-<form class="form form-horizontal form-small search-form" role="form" >
+<form class="form form-inline form-small " role="form" style="width: 800px; margin-bottom: 20px">
 	<fieldset>
 		<legend>用户搜索</legend>
-		<div class="form-group">
-			<label class="control-label col-xs-2 col-sm-1" for="name">姓名:</label>
-			<div class="col-sm-4 col-xs-6">
-				<input type="text" class="input-sm form-control ng-pristine ng-valid" ng-model="searchModel.name" name="name" id="name"></div>
+		<div class="col-xs-8" style="width: 600px; padding: 0;">
+			<div class="form-group">
+				<div class="input-group">
+					<div class="input-group-addon">姓名</div>
+					<input type="text" class="form-control" ng-model="searchModel.name">
+					<div class="input-group-addon">帐号</div>
+					<input type="text" class="form-control" ng-model="searchModel.account">
+					<div class="input-group-addon">岗位</div>
+					<input type="text" class="form-control" ng-model="searchModel.positions">
+				</div>
+			</div>
 		</div>
-		<div class="form-group">
-			<label class="control-label col-xs-2 col-sm-1" for="account">帐号:</label>
-			<div class="col-sm-4 col-xs-6">
-				<input type="text" class="input-sm form-control ng-pristine ng-valid" ng-model="searchModel.account" name="account" id="account"></div>
-		</div>
-		<div class="form-group">
-			<label class="control-label col-xs-2 col-sm-1" for="positions">岗位:</label>
-			<div class="col-sm-4 col-xs-6">
-				<input type="text" class="input-sm form-control ng-pristine ng-valid" ng-model="searchModel.positions" name="positions" id="positions"></div>
-
-			<div class="col-xs-2">
-				<button class="btn btn-default large-btn" type="submit" ng-click="reloadSearch()">
-					<span class="glyphicon glyphicon-search"></span>
-				</button></div>
+		<div class="col-xs-2">
+			<button class="btn btn-default" ng-click="reloadSearch()" type="submit">
+				<span class="glyphicon glyphicon-search"></span>
+			</button>
 		</div>
 	</fieldset>
 </form>

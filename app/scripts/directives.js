@@ -54,17 +54,17 @@ uud.directive('uuInput', function() {
 			scope.fieldtitle = attrs.fieldtitle || '';
 		},
 		template: '<form class="form form-horizontal form-small search-form" role="form" ng-submit="ngSubmit">' +
-					'<fieldset>' + 
+					'<fieldset>' +
 						'<legend ng-bind="fieldtitle" ng-if="fieldtitle"></legend>' +
 						'<div class="form-group">' +
-							'<div class="col-xs-8 col-sm-7 col-md-6">' +
+							'<div style="width: 300px;" class="col-xs-6">' +
 								'<input type="text" name="search-box" placeholder="{{ placeholder }}" ng-model="model" class="form-control" id="search-box">' +
 							'</div>' +
-							'<div class="col-xs-2">' +
+							'<div style="width: 30px;" class="col-xs-2">' +
 								'<button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>' +
 							'</div>' +
 						'</div>' +
-					'</fieldset>' + 
+					'</fieldset>' +
 				'</form>'
 	}
 })

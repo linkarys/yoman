@@ -196,6 +196,11 @@ a {
   top: -18px;
   font-size: 24px; }
 
+input + .input-group-addon {
+    border-left: 0;
+    border-right: 0;
+}
+
 /**
  * Login Form
  * ----------------------------------------------------------------------------

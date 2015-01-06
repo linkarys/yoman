@@ -77,9 +77,11 @@ a {color: #333; }
  * Search
  * ----------------------------------------------------------------------------
  */
-.search-form {display: block; width: 100%;overflow: hidden;margin: 35px 0 16px -17px;}
+.search-form {display: block; overflow: hidden; margin: 35px 0 16px -17px;}
+.form-field-fixed {width: 250px;}
 .search-box {width: 80%; margin-right: 10px; float: left; }
 .pagination {margin: 20px auto; display: table;}
+
 
 /**
  * Info Panel
