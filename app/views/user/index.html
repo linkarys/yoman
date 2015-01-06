@@ -97,7 +97,7 @@
 						<div class="form-group" ng-class="{ 'has-error' : userForm.password.$invalid && (!userForm.password.$pristine || submitted) }">
 							<label class="control-label col-xs-3" for="password">密码:</label>
 							<div class="col-xs-5">
-								<input type="password" class="input-sm form-control" required ng-model="model.password" name="password" id="password"></div>
+								<input type="password" class="input-sm form-control" ng-required="modalType==='add'" ng-model="model.password" name="password" id="password"></div>
 							<div class="col-xs-4">
 								<p ng-show="userForm.password.$invalid && (!userForm.password.$pristine || submitted)" class="help-block">请输入密码.</p>
 							</div>
